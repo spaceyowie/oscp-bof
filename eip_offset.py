@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import socket
-import sys
+import traceback
 
 targetIP = "192.168.1.1"
 targetPort = 1337
@@ -18,6 +18,5 @@ try:
 
   print "\nDone!"
   
-except:
-  print "\nUh-oh, could not connect to target %s on port %d!" % (targetIP, targetPort)
-  sys.exit()
+except Exception:
+  traceback.print_exc()

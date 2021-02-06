@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import socket
-import sys
 import time
+import traceback
 
 targetIP = "192.168.1.1"
 targetPort = 1337
@@ -22,6 +22,5 @@ while(dataSize < 3000):
     dataSize += 100
     time.sleep(1)
 
-  except:
-    print "\nUh-oh, could not connect to target %s on port %d!" % (targetIP, targetPort)
-    sys.exit()
+except Exception:
+  traceback.print_exc()
