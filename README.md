@@ -31,7 +31,7 @@ Once EIP can be controlled, we need to check there is sufficient space for the s
 
 ## Find badchars
 
-The bad characters must be identified before the shellcode payload can be sent to the target. badchars are any characters that can't be used by the target due to the protocols used, how the application handles the received input, etc, and this will break the exploit. Identifying the badchars is a process of elimination: use the sample `badchars_check.py` to send a list of all characters to the target, debug the target to review the received data, and any characters that break the input can be considered "bad". Remove the badchars from the list and repeat the process until all badchars have been found.
+The bad characters must be identified before the shellcode payload can be sent to the target. Badchars are any characters that can't be used by the target due to the protocols used, how the application handles the received input, etc, and this will break the exploit. Identifying the badchars is a process of elimination: use the sample `badchars_check.py` to send a list of all characters to the target, debug the target to review the received data, and any characters that break the input can be considered "bad". Remove the badchars from the list and repeat the process until all badchars have been found.
 
 Note: `badchars_check.py` includes NULL (`0x00`) as the second character in the badchars list to make it easier to identify if the NULL character is bad, instead of the entire list failing to be received by the target.
 
